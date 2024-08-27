@@ -563,9 +563,9 @@ def video_inpainting(args):
             mask_dilated.append(gradient_mask(mask_img))
 
         # mask indicating the missing region in the video.
-        mask = np.stack(mask, -1).astype(np.bool)  # [H, W, C, N]
-        mask_dilated = np.stack(mask_dilated, -1).astype(np.bool)
-        flow_mask = np.stack(flow_mask, -1).astype(np.bool)
+        mask = np.stack(mask, -1).astype(bool)  # [H, W, C, N]
+        mask_dilated = np.stack(mask_dilated, -1).astype(bool)
+        flow_mask = np.stack(flow_mask, -1).astype(bool)
 
     # Completes the flow.
     videoFlowF = complete_flow(
@@ -636,7 +636,7 @@ def video_inpainting(args):
     for indFrame in range(nFrame):
         mask_gradient[:, :, indFrame] = scipy.ndimage.binary_fill_holes(
             mask_gradient[:, :, indFrame]
-        ).astype(np.bool)
+        ).astype(bool)
 
     # After one gradient propagation iteration
     # gradient --> RGB
