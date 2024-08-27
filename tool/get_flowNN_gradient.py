@@ -435,7 +435,7 @@ def get_flowNN_gradient(args,
             assert(((indFrame - sub[SourceFmInd[0], :][:, 2]) <= 0).sum() == 0)
 
     # New mask
-    mask_tofill = np.zeros((imgH, imgW, nFrame)).astype(np.bool)
+    mask_tofill = np.zeros((imgH, imgW, nFrame)).astype(bool)
 
     for indFrame in range(nFrame):
         if args.Nonlocal:
@@ -469,7 +469,7 @@ def get_flowNN_gradient(args,
         HaveNN[:, :, 0] = HaveFlowNN[:, :, indFrame, 0] == 1
         HaveNN[:, :, 1] = HaveFlowNN[:, :, indFrame, 1] == 1
 
-        NotHaveNN = np.logical_and(np.invert(HaveNN.astype(np.bool)),
+        NotHaveNN = np.logical_and(np.invert(HaveNN.astype(bool)),
                 np.repeat(np.expand_dims((mask[:, :, indFrame]), 2), num_candidate, axis=2))
 
         if args.Nonlocal:
