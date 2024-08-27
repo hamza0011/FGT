@@ -76,10 +76,10 @@ def gradient_mask(mask):
         (
             mask,
             np.concatenate(
-                (mask[1:, :], np.zeros((1, mask.shape[1]), dtype=np.bool)), axis=0
+                (mask[1:, :], np.zeros((1, mask.shape[1]), dtype=bool)), axis=0
             ),
             np.concatenate(
-                (mask[:, 1:], np.zeros((mask.shape[0], 1), dtype=np.bool)), axis=1
+                (mask[:, 1:], np.zeros((mask.shape[0], 1), dtype=bool)), axis=1
             ),
         )
     )
